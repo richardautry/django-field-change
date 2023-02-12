@@ -1,0 +1,16 @@
+[
+  {
+    "model":"solar_equipment.solarpanel",
+    "fields": {
+      "name": "Super Solar Panel",
+      "price": 105.30
+    }
+  },
+  {
+    "model": "solar_equipment.solarpanel",
+    "fields": {
+      "name": "Mediocre Solar Panel",
+      "price": 85.60
+    }
+  }
+]
