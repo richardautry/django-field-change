@@ -4,7 +4,7 @@ from solar_equipment.utils import on_change, worker_builder, worker_updater
 
 
 class SolarPanelSerializer(serializers.ModelSerializer):
-    @on_change(field_names=["price", "name"], target=worker_builder)
+    @on_change(field_names=["name"], target=worker_builder)
     def update(self, instance, validated_data):
         return super().update(instance, validated_data)
 

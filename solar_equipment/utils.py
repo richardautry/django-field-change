@@ -10,7 +10,7 @@ def worker_updater(name=None):
     print(f"updating {name}...")
 
 
-def field_changed(instance, field_name, updated_data):
+def field_changed(field_name, instance, updated_data):
     ret_val = False
     if field_name in updated_data:
         new_field_value = updated_data.get(field_name)
@@ -23,10 +23,8 @@ def on_change(field_names: List[str], target):
         @wraps(func)
         def drive_worker(*args, **kwargs):
             for field_name in field_names:
-                if field_name in args[2]:
-                    new_field_value = args[2].get(field_name)
-                    if getattr(args[1], field_name) != new_field_value:
-                        target(field_name)
+                if field_changed(field_name, *args[1:]):
+                    target(field_name)
             return func(*args, **kwargs)
         return drive_worker
     return worker_flag
